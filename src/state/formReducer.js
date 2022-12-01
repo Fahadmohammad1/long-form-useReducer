@@ -1,6 +1,6 @@
-import { actionTypes } from "../state/actionTypes";
+import { actionTypes } from "./actionTypes";
 
-const initialState = {
+export const initialState = {
   firstName: "",
   lastName: "",
   email: "",
@@ -11,4 +11,20 @@ const initialState = {
   term: true,
 };
 
-export const reducer = (state, action) => {};
+export const reducer = (state, action) => {
+  switch (action.type) {
+    case actionTypes.INPUT:
+      return {
+        ...state,
+        [action.payload.name]: action.payload.value,
+      };
+    case actionTypes.TOGGLE:
+      return {
+        ...state,
+        term: !state.term,
+      };
+
+    default:
+      return state;
+  }
+};

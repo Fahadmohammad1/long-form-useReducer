@@ -6,6 +6,7 @@ const LongForm = () => {
 
   const submit = (e) => {
     e.preventDefault();
+    console.log(state);
   };
   return (
     <div className="h-screen w-screen flex justify-center items-center overflow-auto">
@@ -33,7 +34,17 @@ const LongForm = () => {
           <label className="mb-2" htmlFor="lastName">
             Last Name
           </label>
-          <input type="text" name="lastName" id="lastName" />
+          <input
+            type="text"
+            name="lastName"
+            id="lastName"
+            onBlur={(e) =>
+              dispatch({
+                type: "INPUT",
+                payload: { name: e.target.value, value: e.target.value },
+              })
+            }
+          />
         </div>
         <div className="flex flex-col w-full max-w-xs">
           <label className="mb-2" htmlFor="email">
