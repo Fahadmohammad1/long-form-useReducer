@@ -6,7 +6,7 @@ export const initialState = {
   email: "",
   gender: "",
   education: "",
-  quantitiy: 0,
+  quantity: 0,
   feedback: "",
   term: true,
 };
@@ -22,6 +22,16 @@ export const reducer = (state, action) => {
       return {
         ...state,
         term: !state.term,
+      };
+    case actionTypes.INCREMENT:
+      return {
+        ...state,
+        quantity: state.quantity + action.payload.quantity,
+      };
+    case actionTypes.DECREMENT:
+      return {
+        ...state,
+        quantity: state.quantity - action.payload.quantity,
       };
 
     default:
